@@ -57,7 +57,9 @@ VITE_API_URL=http://your-server:5000 npm run dev
 - 💬 Supports English and Swahili questions
 - 🔗 Source URLs shown under answers
 
-## 📸 Screenshot
+## 📸 Interface Preview
+<img width="1364" height="1018" alt="image" src="https://github.com/user-attachments/assets/a8927119-8b2d-455e-9869-e1617d9580d6" />
+
 
 
 ## Notes
@@ -71,7 +73,7 @@ The vector index (`index.faiss` + `index.pkl`) was built with `sentence-transfor
 - 📧 [ramadhanyahya16@gmail.com](mailto:ramadhanyahya16@gmail.com)
 - 🔗 [LinkedIn:Yahaya Nasoro](https://www.linkedin.com/in/yahaya-nasoro-039bb231a)
   
-Designed and developed this project end-to-end  from building the FAISS retrieval pipeline and integrating Google Gemini, to designing the React frontend and deploying the full-stack customer support chatbot for Yas Tanzania.
+Designed and developed this project end-to-end — from building the FAISS retrieval pipeline and integrating Google Gemini, to designing the React frontend and deploying the full-stack customer support chatbot for Yas Tanzania.
 ---
 
 ## 📄 License & Disclaimer
