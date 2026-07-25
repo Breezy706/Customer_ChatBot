@@ -1,4 +1,4 @@
-# Yas Customer Care RAG Chatbot
+#🎧💬 Yas Customer Care RAG Chatbot
 
 A customer support chatbot for Yas Tanzania using RAG (Retrieval Augmented Generation) with FAISS + Google Gemini.
 
