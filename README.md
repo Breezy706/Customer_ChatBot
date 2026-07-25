@@ -79,5 +79,5 @@ Designed and developed this project end to end from building the FAISS retrieval
 ## 📄 License & Disclaimer
 This project was built independently for personal learning and portfolio purposes as part of applied research into building RAG based chatbots. It is **not affiliated with, endorsed by or officially associated with Yas Tanzania**  the Yas name and branding are used solely for educational/demonstration purposes.
  
-Released under the MIT License — you are free to use, modify and distribute it in accordance with the terms of that license.
+Released under the MIT License you are free to use, modify and distribute it in accordance with the terms of that license.
 
