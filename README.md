@@ -71,7 +71,7 @@ The vector index (`index.faiss` + `index.pkl`) was built with `sentence-transfor
 - 📧 [ramadhanyahya16@gmail.com](mailto:ramadhanyahya16@gmail.com)
 - 🔗 [LinkedIn:Yahaya Nasoro](https://www.linkedin.com/in/yahaya-nasoro-039bb231a)
   
-Designed and developed this project end-to-end — from building the FAISS retrieval pipeline and integrating Google Gemini, to designing the React frontend and deploying the full-stack customer support chatbot for Yas Tanzania.
+Designed and developed this project end-to-end  from building the FAISS retrieval pipeline and integrating Google Gemini, to designing the React frontend and deploying the full-stack customer support chatbot for Yas Tanzania.
 ---
 
 ## 📄 License & Disclaimer
