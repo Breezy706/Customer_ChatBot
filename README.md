@@ -57,5 +57,25 @@ VITE_API_URL=http://your-server:5000 npm run dev
 - 💬 Supports English and Swahili questions
 - 🔗 Source URLs shown under answers
 
+## 📸 Screenshot
+
+
 ## Notes
 The vector index (`index.faiss` + `index.pkl`) was built with `sentence-transformers/all-MiniLM-L6-v2` (dim 384). The LLM used is `gemini-2.5-flash`.
+
+## 👤 Author
+ 
+**Yahaya Nasoro**
+*Data Scientist | Data Analyst*
+ 
+- 📧 [ramadhanyahya16@gmail.com](mailto:ramadhanyahya16@gmail.com)
+- 🔗 [LinkedIn:Yahaya Nasoro](https://www.linkedin.com/in/yahaya-nasoro-039bb231a)
+  
+Designed and developed this project end-to-end — from building the FAISS retrieval pipeline and integrating Google Gemini, to designing the React frontend and deploying the full-stack customer support chatbot for Yas Tanzania.
+---
+
+## 📄 License & Disclaimer
+This project was built independently for personal learning and portfolio purposes as part of applied research into building RAG-based chatbots. It is **not affiliated with, endorsed by, or officially associated with Yas Tanzania** — the Yas name and branding are used solely for educational/demonstration purposes.
+ 
+Released under the MIT License — you are free to use, modify, and distribute it in accordance with the terms of that license.
+
