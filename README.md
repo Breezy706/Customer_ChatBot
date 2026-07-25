@@ -73,8 +73,8 @@ The vector index (`index.faiss` + `index.pkl`) was built with `sentence-transfor
 - 📧 [ramadhanyahya16@gmail.com](mailto:ramadhanyahya16@gmail.com)
 - 🔗 [LinkedIn:Yahaya Nasoro](https://www.linkedin.com/in/yahaya-nasoro-039bb231a)
   
-Designed and developed this project end-to-end  from data analysis and model building to dashboard design and full-stack web application deployment as part of applied research into predicting cardiovascular disease risk using Machine Learning.
----
+Designed and developed this project end-to-end — from building the FAISS retrieval pipeline and integrating Google Gemini, to designing the React frontend and deploying the full-stack customer support chatbot for Yas Tanzania.
+
 
 ## 📄 License & Disclaimer
 This project was built independently for personal learning and portfolio purposes as part of applied research into building RAG-based chatbots. It is **not affiliated with, endorsed by, or officially associated with Yas Tanzania** — the Yas name and branding are used solely for educational/demonstration purposes.
