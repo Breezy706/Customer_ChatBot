@@ -7,7 +7,7 @@ export default function App() {
   const [messages, setMessages] = useState([
     {
       role: "bot",
-      text: "Welcome to Yas! 👋 I'm your assistant. Ask me anything about Yas products, services, networks, or plans.",
+      text: "Welcome to Yas! 👋 I'm your assistant. Ask me anything about Yas products, services, networks or plans.",
     },
   ]);
   const [input, setInput] = useState("");
