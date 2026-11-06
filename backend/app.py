@@ -4,8 +4,13 @@ Yas Customer Support RAG Chatbot — Flask backend.
 Loads a pre-built FAISS index (HuggingFace all-MiniLM-L6-v2 embeddings)
 and answers questions with Google Gemini via LangChain.
 
-Run:
+Environment variables:
+    GOOGLE_API_KEY   (required) your Google AI Studio key
+    FAISS_DIR        (optional) folder of the FAISS index, default ./faiss_index
+
+Run locally:
     pip install -r requirements.txt
+    set GOOGLE_API_KEY=your-key      (Windows)
     python app.py
 """
 
@@ -13,34 +18,45 @@ import os
 import time
 import requests
 from bs4 import BeautifulSoup
-from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-from langchain_huggingface import HuggingFaceEmbeddings
+from fastembed import TextEmbedding
 from langchain_community.vectorstores import FAISS
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.embeddings import Embeddings
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnableLambda
 
-load_dotenv()  # inasoma backend/.env wakati wa maendeleo local
+
+class OnnxMiniLMEmbeddings(Embeddings):
+    """Same model as before (all-MiniLM-L6-v2), but run with ONNX instead of
+    torch. The FAISS index stays valid, and memory use is far lower, which
+    is needed to fit on a 512 MB server."""
+
+    def __init__(self, model_name: str = "sentence-transformers/all-MiniLM-L6-v2"):
+        self.model = TextEmbedding(model_name=model_name)
+
+    def embed_documents(self, texts):
+        return [v.tolist() for v in self.model.embed(list(texts))]
+
+    def embed_query(self, text):
+        return next(iter(self.model.embed([text]))).tolist()
 
 
 # ─── Config ────────────────────────────────────────────────────────────────────
+# The API key must come from an environment variable. Never write it in code.
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 if not GOOGLE_API_KEY:
-    raise RuntimeError(
-        "GOOGLE_API_KEY environment variable is not set. "
-        "Create a .env file locally (see .env.example) or set it in your "
-        "hosting provider's dashboard before starting the app."
-    )
+    raise RuntimeError("GOOGLE_API_KEY is not set")
+
 FAISS_DIR = os.environ.get("FAISS_DIR", "./faiss_index")
 
 
 # ─── Load Vector Store & LLM ───────────────────────────────────────────────────
 print("🔄 Loading embeddings model...")
-embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+embeddings = OnnxMiniLMEmbeddings()
 
 print("🔄 Loading FAISS index...")
 db = FAISS.load_local(FAISS_DIR, embeddings, allow_dangerous_deserialization=True)
@@ -264,7 +280,7 @@ def ask(question: str, chat_history=None, similarity_threshold: float = 1.2):
                 #lines.append(line)
 
         #answer = "\n".join(lines)
-        
+
         if "NOT_IN_DOCUMENT" not in answer:
             return {"answer": answer, "source": "documents", "score": float(best_score)}
 
@@ -282,17 +298,17 @@ def ask(question: str, chat_history=None, similarity_threshold: float = 1.2):
                 # Clean answer
                 answer = answer.replace("• •", "•")
                 answer = answer.replace("\n\n\n", "\n\n")
-                
+
                 # Remove duplicate lines
                 #lines = []
                 #seen = set()
-                
+
                 #for line in answer.split("\n"):
                     #line = line.strip()
                     #if line and line not in seen:
                         #seen.add(line)
                         #lines.append(line)
-                
+
                     #answer = "\n".join(lines)
                 if "NOT_ON_WEBSITE" not in answer:
                     return {"answer": answer, "source": "website"}
