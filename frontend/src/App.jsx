@@ -40,7 +40,7 @@ export default function App() {
         sources: data.sources,
       }]);
     } catch (e) {
-      setMessages((m) => [...m, { role: "bot", text: "⚠️ Couldn't reach the server. Please make sure the backend (app.py) is running on port 5000." }]);
+      setMessages((m) => [...m, { role: "bot", text: "⚠️ Couldn't reach the server. It may be waking up, please wait a minute and try again." }]);
     } finally {
       setLoading(false);
       setTimeout(() => inputRef.current?.focus(), 30);
